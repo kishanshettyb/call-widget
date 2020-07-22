@@ -67,8 +67,15 @@ class CallWidget extends React.Component {
             display: "flex",
             flexDirection: "column",
             flex: 2,
-            backgroundColor: "black",
+            backgroundColor: "#007bff",
             opacity: 0.9,
+            borderRadius: "10px",
+            padding: "10px 30px",
+            boxShadow: "0 1rem 3rem rgba(0,0,0,.175)",
+            cursor: "pointer",
+          },
+          onClick: function onClick() {
+            navigator.clipboard.writeText(captionText);
           },
         },
         React.createElement(
@@ -81,7 +88,8 @@ class CallWidget extends React.Component {
               alignItems: "center",
               justifyContent: "center",
               fontWeight: "bold",
-              fontSize: 10,
+              fontSize: "18px",
+              paddingBottom: "5px",
             },
           },
           captionText ? captionText : "Loading..."
@@ -91,28 +99,72 @@ class CallWidget extends React.Component {
           {
             style: {
               cursor: "pointer",
-              color: "#2fc41b",
+              color: "#fff",
               display: "flex",
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
+              backgroundColor: "#1380fd",
+              padding: "3px",
+              borderRadius: "10px",
+              boxShadow: "0 1rem 3rem rgba(0,0,0,.175)",
             },
           },
           "\u260E\xA0\xA0",
           React.createElement(
-            "button",
+            "a",
+
             {
+              href: "tel:" + phoneNumber,
               style: {
                 cursor: "pointer",
-                backgroundColor: "black",
-                color: "#2fc41b",
-              },
-              onClick: function onClick() {
-                navigator.clipboard.writeText(captionText);
-                window.alert("Phone number copied to clipboard");
+                backgroundColor: "transparent",
+                color: "#fff",
+                border: "0",
+                fontSize: "12px",
+                fontWeight: "bold",
+                textDecoration: "none",
               },
             },
             phoneNumber ? phoneNumber : "Loading ..."
+          )
+        )
+      ),
+      React.createElement(
+        "div",
+        {
+          style: {
+            display: "flex",
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "flex-end",
+          },
+        },
+        React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "button",
+            {
+              style: {
+                borderRadius: 50,
+                cursor: "pointer",
+                backgroundColor: "#007bff",
+                color: "#fff",
+                fontSize: "15px",
+                fontWeight: "bold",
+                width: "35px",
+                height: "35px",
+                marginTop: "5px",
+                border: "0",
+                boxShadow: "0 1rem 3rem rgba(0,0,0,.175)",
+              },
+              onClick: function onClick() {
+                window.alert("close clicked");
+                this.setState({ show: false }, () => {});
+              },
+            },
+            "X"
           )
         )
       )
