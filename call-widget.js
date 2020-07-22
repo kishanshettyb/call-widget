@@ -56,8 +56,8 @@ class CallWidget extends React.Component {
       {
         style: {
           position: "absolute",
-          top: window.innerHeight - 100,
-          left: window.innerWidth - 220,
+          bottom: "50px",
+          right: "50px",
         },
       },
       React.createElement(
@@ -160,8 +160,8 @@ class CallWidget extends React.Component {
                 boxShadow: "0 1rem 3rem rgba(0,0,0,.175)",
               },
               onClick: function onClick() {
-                window.alert("close clicked");
-                this.setState({ show: false }, () => {});
+                document.querySelector("#call-widget-container").style.display =
+                  "none";
               },
             },
             "X"
